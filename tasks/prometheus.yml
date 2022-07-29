@@ -74,7 +74,7 @@
 - name: Prometheus - Add rules
   become: true
   ansible.builtin.copy:
-    src: /home/dorlov/ansible/diploma/monitoring/templates/rules.yml
+    src: templates/rules.yml
     dest: "{{ prometheus_path_conf }}/rules.yml"
     mode: '644'
     owner: prometheus

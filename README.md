@@ -1,5 +1,5 @@
-Role Name
-=========
+Monitoring
+==========
 
 Ansible role for Prometheus, Alert Manager, Grafana installation & configuration.
 
@@ -56,7 +56,7 @@ Example Playbook
 - name: Monitoring Provisioning
   hosts: monitoring
   roles:
-    - monitoring
+    - Monitoring-role
 ```
 
 License

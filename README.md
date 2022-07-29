@@ -33,7 +33,7 @@ Role Variables
 | repo_path | path to repositories directory | string | /etc/yum.repos.d |
 | grafuser | grafana user | string | admin |
 | grafpassword | grafana password | string | admin |
-| ***template variables *** |
+| ***template variables*** |
 | host_nginx | server ip address (nginx) | string | CHANGEME |
 | host_db1 | server ip address (mysql_master) | string | CHANGEME |
 | host_db2 | server ip address (mysql_slave) | string | CHANGEME |

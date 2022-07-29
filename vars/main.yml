@@ -22,23 +22,22 @@ systemd_path: "/etc/systemd/system"
 
 # grafana.yml
 repo_path: "/etc/yum.repos.d"
-grafuser: "admin"
-grafpassword: "admin"
+grafuser: "CHANGEME"
+grafpassword: "CHANGEME"
 
 # prometheus.yml.j2
-host_nginx: "10.20.100.150"
-host_db1: "10.20.100.151"
-host_db2: "10.20.100.152"
-host_app: "10.20.100.153"
-host_gitlab: "10.20.100.154"
-host_runner: "10.20.100.155"
-host_database: "10.20.100.151"
+host_nginx: "CHANGEME"
+host_db1: "CHANGEME"
+host_db2: "CHANGEME"
+host_app: "CHANGEME"
+host_gitlab: "CHANGEME"
+host_runner: "CHANGEME"
+host_database: "CHANGEME"
 
 # alertmanager.yml.j2
-
-email_recepient: ""
-email_sender: ""
-email_smtp_server: ""
-email_auth_username: ""
-email_auth_identity: ""
-email_auth_password: ""
+email_recepient: "CHANGEME"
+email_sender: "CHANGEME"
+email_smtp_server: "CHANGEME"
+email_auth_username: "CHANGEME"
+email_auth_identity: "CHANGEME"
+email_auth_password: "CHANGEME"

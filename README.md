@@ -45,7 +45,6 @@ Role Variables
 | email_sender | sender's address | string | CHANGEME |
 | email_smtp_server | smtp server address:port | string | smtp.mail.ru:465 |
 | email_auth_username | smtp auth username | string | CHANGEME |
-| email_auth_identity | smtp auth identity | string | CHANGEME |
 | email_auth_password | smtp auth password | string | CHANGEME |
 
 

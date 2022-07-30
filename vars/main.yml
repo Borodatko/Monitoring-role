@@ -37,7 +37,7 @@ host_database: "CHANGEME"
 # alertmanager.yml.j2
 email_recepient: "CHANGEME"
 email_sender: "CHANGEME"
-email_smtp_server: "CHANGEME"
+email_smtp_server: "smtp.mail.ru:465"
 email_auth_username: "CHANGEME"
 email_auth_identity: "CHANGEME"
 email_auth_password: "CHANGEME"

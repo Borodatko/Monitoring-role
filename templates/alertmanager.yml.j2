@@ -11,8 +11,8 @@ receivers:
       from: '{{ email_sender }}'
       smarthost: {{ email_smtp_server }}
       auth_username: '{{ email_auth_username }}'
-      auth_identity: '{{ email_auth_identity }}'
       auth_password: '{{ email_auth_password }}'
+      require_tls: false
 inhibit_rules:
   - source_match:
       severity: 'critical'

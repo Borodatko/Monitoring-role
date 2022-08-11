@@ -21,7 +21,7 @@
 - name: Flush handlers
   meta: flush_handlers
 
-- name: Grafana - Add datasource
+- name: Grafana - Add Prometheus datasource
   community.grafana.grafana_datasource:
     name: Prometheus
     grafana_url: http://localhost:3000
@@ -31,7 +31,19 @@
     ds_url: http://localhost:9090
     access: proxy
     state: present
-  register: result
+  tags: monitoring
+
+- name: Grafana - Add MySQL datasource
+  community.grafana.grafana_datasource:
+    name: MySQL
+    grafana_url: http://localhost:3000
+    grafana_user: "{{ grafuser }}"
+    grafana_password: "{{ grafpassword }}"
+    ds_type: mysql
+    ds_url: "{{ mysql_db_addr }}"
+    database: "{{ mysql_database }}"
+    user: "{{ mysql_user }}"
+    password: "{{ mysql_pass }}"
   tags: monitoring
 
 - name: Grafana - Copy Node Exporter Dashboard
@@ -64,4 +76,20 @@
     state: present
     overwrite: true
     path: "{{ tmp_path }}/mysql-overview.json"
+  tags: monitoring
+
+- name: Grafana - Copy Wordpress Stats Dashboard
+  ansible.builtin.copy:
+    src: files/wordpress-stats.json
+    dest: "{{ tmp_path }}/wordpress-stats.json"
+  tags: monitoring
+
+- name: Grafana - Import Wordpress Stats Dashboard
+  community.grafana.grafana_dashboard:
+    grafana_url: http://localhost:3000
+    grafana_user: "{{ grafuser }}"
+    grafana_password: "{{ grafpassword }}"
+    state: present
+    overwrite: true
+    path: "{{ tmp_path }}/wordpress-stats.json"
   tags: monitoring

@@ -22,8 +22,12 @@ systemd_path: "/etc/systemd/system"
 
 # grafana.yml
 repo_path: "/etc/yum.repos.d"
-grafuser: "CHANGEME"
-grafpassword: "CHANGEME"
+grafuser: "admin"
+grafpassword: "admin"
+mysql_db_addr: "CHANGEME"
+mysql_database: "CHANGEME"
+mysql_user: "CHANGEME"
+mysql_pass: "CHANGEME"
 
 # prometheus.yml.j2
 host_nginx: "CHANGEME"

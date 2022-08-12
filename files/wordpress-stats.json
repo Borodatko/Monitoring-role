@@ -3,10 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": {
-          "type": "datasource",
-          "uid": "grafana"
-        },
+        "datasource": "-- Grafana --",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -31,10 +28,7 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -130,10 +124,7 @@
       "pluginVersion": "9.0.6",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -167,10 +158,7 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -216,10 +204,7 @@
       "pluginVersion": "7.1.5",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "time_series",
           "group": [],
           "metricColumn": "none",
@@ -247,10 +232,7 @@
       "type": "piechart"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "displayName": "Total Visitors",
@@ -294,10 +276,7 @@
       "pluginVersion": "9.0.6",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -329,10 +308,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "displayName": "$__cell_0",
@@ -411,10 +387,7 @@
       "pluginVersion": "9.0.6",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -449,10 +422,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "displayName": "Total Online Users",
@@ -496,10 +466,7 @@
       "pluginVersion": "9.0.6",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -531,10 +498,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "displayName": "$__cell_0",
@@ -621,10 +585,7 @@
       "pluginVersion": "9.0.6",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -659,10 +620,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -758,10 +716,7 @@
       "pluginVersion": "9.0.6",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -794,10 +749,7 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "displayName": "Total Visits",
@@ -841,10 +793,7 @@
       "pluginVersion": "9.0.6",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -876,10 +825,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -925,10 +871,7 @@
       "pluginVersion": "7.2.1",
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "time_series",
           "group": [],
           "metricColumn": "none",
@@ -966,10 +909,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "mysql",
-        "uid": "MbvFGvmVk"
-      },
+      "datasource": "MySQL",
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -1015,10 +955,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "time_series",
           "group": [],
           "metricColumn": "none",
@@ -1047,10 +984,7 @@
           ]
         },
         {
-          "datasource": {
-            "type": "mysql",
-            "uid": "MbvFGvmVk"
-          },
+          "datasource": "MySQL",
           "format": "time_series",
           "group": [],
           "metricColumn": "none",

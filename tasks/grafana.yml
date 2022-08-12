@@ -31,6 +31,7 @@
     ds_url: http://localhost:9090
     access: proxy
     state: present
+  ignore_errors: true
   tags: monitoring
 
 - name: Grafana - Add MySQL datasource
@@ -43,7 +44,11 @@
     ds_url: "{{ mysql_db_addr }}"
     database: "{{ mysql_database }}"
     user: "{{ mysql_user }}"
-    password: "{{ mysql_pass }}"
+    additional_secure_json_data:
+      password: "{{ mysql_pass }}"
+    access: proxy
+    state: present
+  ignore_errors: true
   tags: monitoring
 
 - name: Grafana - Copy Node Exporter Dashboard
@@ -58,7 +63,7 @@
     grafana_user: "{{ grafuser }}"
     grafana_password: "{{ grafpassword }}"
     state: present
-    overwrite: true
+    overwrite: false
     path: "{{ tmp_path }}/node-exporter-full.json"
   tags: monitoring
 
@@ -74,7 +79,7 @@
     grafana_user: "{{ grafuser }}"
     grafana_password: "{{ grafpassword }}"
     state: present
-    overwrite: true
+    overwrite: false
     path: "{{ tmp_path }}/mysql-overview.json"
   tags: monitoring
 
@@ -90,6 +95,6 @@
     grafana_user: "{{ grafuser }}"
     grafana_password: "{{ grafpassword }}"
     state: present
-    overwrite: true
+    overwrite: false
     path: "{{ tmp_path }}/wordpress-stats.json"
   tags: monitoring

@@ -33,7 +33,7 @@ Role Variables
 | repo_path | path to repositories directory | string | /etc/yum.repos.d |
 | grafuser | grafana user | string | admin |
 | grafpassword | grafana password | string | admin |
-| mysql_db_addr | database address with port (example: "10.10.10.10:3306" | url | CHANGEME |
+| mysql_db_addr | database address with port (example: "10.10.10.10:3306") | url | CHANGEME |
 | mysql_database | database name | string | CHANGEME |
 | mysql_user | database user | string | CHANGEME |
 | mysql_pass | database password | string | CHANGEME |

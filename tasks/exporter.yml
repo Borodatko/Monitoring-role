@@ -4,14 +4,18 @@
   ansible.builtin.get_url:
     url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.{{ arch }}.tar.gz"
     dest: "{{ node_exporter_archive }}"
-  tags: monitoring
+  tags:
+    - monitoring
+    - exporter
 
 - name: NodeExporter - Extract archive
   ansible.builtin.unarchive:
     src: "{{ node_exporter_archive }}"
     dest: "{{ tmp_path }}"
     remote_src: yes
-  tags: monitoring
+  tags:
+    - monitoring
+    - exporter
 
 - name: NodeExporter - Copy binaries to "{{ bin_path }}"
   become: true
@@ -24,7 +28,9 @@
     group: prometheus
   with_items:
     - node_exporter
-  tags: monitoring
+  tags:
+    - monitoring
+    - exporter
 
 - name: NodeExporter - Add Unit file
   become: true
@@ -35,7 +41,20 @@
   notify:
     - Reload daemon
     - Start node_exporter
-  tags: monitoring
+  tags:
+    - monitoring
+    - exporter
 
 - name: Flush handlers
   meta: flush_handlers
+
+- name: Remove Artifacts
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ node_exporter_archive }}"
+    - "{{ node_exporter_path_tmp }}"
+  tags:
+    - monitoring
+    - exporter

@@ -6,7 +6,9 @@
     src: grafana.repo.j2
     dest: "{{ repo_path }}/grafana.repo"
     mode: '644'
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Install package
   become: true
@@ -16,7 +18,9 @@
     state: latest
   notify:
     - Start grafana
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Flush handlers
   meta: flush_handlers
@@ -29,10 +33,12 @@
     grafana_password: "{{ grafpassword }}"
     ds_type: prometheus
     ds_url: http://localhost:9090
-    access: proxy
+    basic_auth_user: "{{ basic_user }}"
+    basic_auth_password: "{{ basic_pass }}"
     state: present
-  ignore_errors: true
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Add MySQL datasource
   community.grafana.grafana_datasource:
@@ -46,16 +52,20 @@
     user: "{{ mysql_user }}"
     additional_secure_json_data:
       password: "{{ mysql_pass }}"
-    access: proxy
+    basic_auth_user: "{{ basic_user }}"
+    basic_auth_password: "{{ basic_pass }}"
     state: present
-  ignore_errors: true
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Copy Node Exporter Dashboard
   ansible.builtin.copy:
     src: files/node-exporter-full.json
     dest: "{{ tmp_path }}/node-exporter-full.json"
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Import Node Exporter Dashboard
   community.grafana.grafana_dashboard:
@@ -65,13 +75,17 @@
     state: present
     overwrite: false
     path: "{{ tmp_path }}/node-exporter-full.json"
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Copy Mysqld Exporter Dashboard
   ansible.builtin.copy:
     src: files/mysql-overview.json
     dest: "{{ tmp_path }}/mysql-overview.json"
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Import Mysqld Exporter Dashboard
   community.grafana.grafana_dashboard:
@@ -81,13 +95,17 @@
     state: present
     overwrite: false
     path: "{{ tmp_path }}/mysql-overview.json"
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Copy Wordpress Stats Dashboard
   ansible.builtin.copy:
     src: files/wordpress-stats.json
     dest: "{{ tmp_path }}/wordpress-stats.json"
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana
 
 - name: Grafana - Import Wordpress Stats Dashboard
   community.grafana.grafana_dashboard:
@@ -97,4 +115,6 @@
     state: present
     overwrite: false
     path: "{{ tmp_path }}/wordpress-stats.json"
-  tags: monitoring
+  tags:
+    - monitoring
+    - grafana

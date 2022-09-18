@@ -31,6 +31,8 @@ Role Variables
 | systemd_path | systemd unit file path | string | /etc/systemd/system |
 | ***grafana.yml*** |
 | repo_path | path to repositories directory | string | /etc/yum.repos.d |
+| basic_user | datasource basic auth username | string | CHANGEME |
+| basic_pass | datasource basic auth password | string | CHANGEME |
 | grafuser | grafana user | string | admin |
 | grafpassword | grafana password | string | admin |
 | mysql_db_addr | database address with port (example: "10.10.10.10:3306") | url | CHANGEME |

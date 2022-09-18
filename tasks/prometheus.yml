@@ -4,7 +4,9 @@
   ansible.builtin.get_url:
     url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.{{ arch }}.tar.gz"
     dest: "{{ prometheus_archive }}"
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Add user
   become: true
@@ -12,7 +14,9 @@
     name: prometheus
     shell: /bin/false
     create_home: no
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Create directories
   become: true
@@ -25,14 +29,18 @@
   with_items:
     - "{{ prometheus_path_conf }}"
     - "{{ prometheus_path_db }}"
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Extract archive
   ansible.builtin.unarchive:
     src: "{{ prometheus_archive }}"
     dest: "{{ tmp_path }}"
     remote_src: true
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Copy bianries to "{{ bin_path }}"
   become: true
@@ -46,7 +54,9 @@
   with_items:
     - prometheus
     - promtool
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Copy directories to "{{ prometheus_path_conf }}"
   become: true
@@ -59,7 +69,9 @@
   with_items:
     - consoles
     - console_libraries
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Add config file
   become: true
@@ -69,7 +81,9 @@
     mode: '644'
     owner: prometheus
     group: prometheus
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Add rules
   become: true
@@ -79,7 +93,9 @@
     mode: '644'
     owner: prometheus
     group: prometheus
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Prometheus - Add Unit file
   become: true
@@ -90,7 +106,20 @@
   notify:
     - Reload daemon
     - Start prometheus
-  tags: monitoring
+  tags:
+    - monitoring
+    - prometheus
 
 - name: Flush handlers
   meta: flush_handlers
+
+- name: Remove Artifacts
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ prometheus_archive }}"
+    - "{{ prometheus_path_tmp }}"
+  tags:
+    - monitoring
+    - prometheus

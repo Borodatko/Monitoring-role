@@ -1,5 +1,4 @@
 ---
-
 - name: Grafana - Add repo file
   become: true
   ansible.builtin.template:
@@ -15,7 +14,7 @@
   ansible.builtin.yum:
     name:
       - grafana
-    state: latest
+    state: present
   notify:
     - Start grafana
   tags:
@@ -23,7 +22,7 @@
     - grafana
 
 - name: Flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: Grafana - Add Prometheus datasource
   community.grafana.grafana_datasource:
@@ -63,6 +62,7 @@
   ansible.builtin.copy:
     src: files/node-exporter-full.json
     dest: "{{ tmp_path }}/node-exporter-full.json"
+    mode: '0644'
   tags:
     - monitoring
     - grafana
@@ -83,6 +83,7 @@
   ansible.builtin.copy:
     src: files/mysql-overview.json
     dest: "{{ tmp_path }}/mysql-overview.json"
+    mode: '0644'
   tags:
     - monitoring
     - grafana
@@ -103,6 +104,7 @@
   ansible.builtin.copy:
     src: files/wordpress-stats.json
     dest: "{{ tmp_path }}/wordpress-stats.json"
+    mode: '0644'
   tags:
     - monitoring
     - grafana
@@ -118,3 +120,4 @@
   tags:
     - monitoring
     - grafana
+...

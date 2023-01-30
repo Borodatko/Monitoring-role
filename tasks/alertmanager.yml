@@ -1,9 +1,9 @@
 ---
-
 - name: AlertManager - Get release
   ansible.builtin.get_url:
     url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.{{ arch }}.tar.gz"
     dest: "{{ alertmanager_archive }}"
+    mode: '0644'
   tags:
     - monitoring
     - alertmanager
@@ -24,7 +24,7 @@
   ansible.builtin.unarchive:
     src: "{{ alertmanager_archive }}"
     dest: "{{ tmp_path }}"
-    remote_src: yes
+    remote_src: true
   tags:
     - monitoring
     - alertmanager
@@ -34,7 +34,7 @@
   ansible.builtin.copy:
     src: "{{ alertmanager_path_tmp }}/{{ item }}"
     dest: "{{ bin_path }}"
-    remote_src: yes
+    remote_src: true
     mode: '0755'
     owner: prometheus
     group: prometheus
@@ -71,7 +71,7 @@
     - alertmanager
 
 - name: Flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: Remove Artifacts
   ansible.builtin.file:
@@ -83,3 +83,4 @@
   tags:
     - monitoring
     - alertmanager
+...

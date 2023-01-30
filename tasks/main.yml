@@ -1,23 +1,28 @@
 ---
-
 - name: Check OS
-  assert:
+  ansible.builtin.assert:
     that:
-    - ansible_facts['os_family'] == "RedHat"
-    - ansible_facts['distribution_major_version'] == "7"
+      - ansible_facts['os_family'] == "RedHat"
+      - ansible_facts['distribution_major_version'] == "7"
     fail_msg: Host {{ ansible_hostname }} does not meet minimal reqs
 
-- include_tasks: pretasks.yml
+- name: Pretasks
+  ansible.builtin.include_tasks: pretasks.yml
   tags: [always]
 
-- include_tasks: prometheus.yml
+- name: Prometheus installation
+  ansible.builtin.include_tasks: prometheus.yml
   tags: [always]
 
-- include_tasks: alertmanager.yml
+- name: Alertmanager installation
+  ansible.builtin.include_tasks: alertmanager.yml
   tags: [always]
 
-- include_tasks: exporter.yml
+- name: Node Exporter
+  ansible.builtin.include_tasks: exporter.yml
   tags: [always]
 
-- include_tasks: grafana.yml
+- name: Grafana Installation
+  ansible.builtin.include_tasks: grafana.yml
   tags: [always]
+...

@@ -4,6 +4,12 @@ Monitoring
 Ansible role for Prometheus, Alert Manager, Grafana installation & configuration.
 
 
+Dependencies
+------------
+
+ - RHEL7-based OS
+
+
 Role Variables
 --------------
 
@@ -25,7 +31,7 @@ Role Variables
 | alertmanager_path_tmp | alertmanager temporary path | string | {{ tmp_path }}/alertmanager-{{ alertmanager_version }}.{{ arch }} |
 | alertmanager_path_conf | alertmanager config file path | string | /etc/alertmanager |
 | ***exporter.yml*** |
-| node_exporter_version | prometheus node exporter version | string | 1.3.1 |
+| exporter_version | prometheus node exporter version | string | 1.3.1 |
 | node_exporter_archive | downloaded archive | string | {{ tmp_path }}/node_exporter-{{ node_exporter_version }}.{{ arch }}.tar.gz |
 | node_exporter_path_tmp | temporary path | string | {{ tmp_path }}/node_exporter-{{ node_exporter_version }}.{{ arch }} |
 | systemd_path | systemd unit file path | string | /etc/systemd/system |
